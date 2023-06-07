@@ -42,7 +42,7 @@ const googleSignIn = () => {
   const googleProvider = new GoogleAuthProvider();
   return signInWithPopup(auth,googleProvider)
 }
-const resetPassword = (email:string) => sendPasswordResetEmail(auth,email)
+const resetPassword = (email:string) => sendPasswordResetEmail(auth,email);
 export const authContext = createContext<AuthContextType | null>({
   login,
   signup,
