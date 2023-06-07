@@ -23,8 +23,9 @@ export default function Profile(){
       setLoading(true)
     }else{
       setLoading(false)
+      router.push('/login')
     }
-  },[user])
+  },[user,router])
   const onChangeValue= (value:string,name:string) =>{
     setDataProfile({...dataProfile, [name]:value})
     console.log(dataProfile)
@@ -43,7 +44,7 @@ export default function Profile(){
     }
     // console.log("enviado")
   }
-  console.log(user?.photoURL)
+
   return (
     <div className="flex flex-col items-center justify-center justify-center">
       <h2>Tu información</h2>
@@ -73,12 +74,6 @@ export default function Profile(){
       <button className={loading ? "mt-4 block bg-white text-black p-2 rounded-lg":"hidden"} onClick={onLogout}>
         Logout
       </button>
-      <Link href='/register' className="text-sky-200">
-        Registrarse
-      </Link>
-      <Link href='/login' className="text-sky-200">
-        Loguearse
-      </Link>
     </div>
   );
 }

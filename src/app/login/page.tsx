@@ -23,7 +23,6 @@ export default function Login(){
       console.log("logueado correctamente")
     } catch (error:any) {
       //error.code
-      console.log("penazo")
       console.log(error.message)
       //error.code
       console.log(error.code)
