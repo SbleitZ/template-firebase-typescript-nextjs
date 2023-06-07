@@ -1,9 +1,8 @@
 "use client";
-import { FormEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth, useAuthState } from "../Hooks/AuthContext";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import UpdateProfile from "../updateprofile/page";
 export default function Profile(){
   const router = useRouter()
   const { user, setUser } = useAuthState();
@@ -22,7 +21,6 @@ export default function Profile(){
       router.push('/login')
     }
   },[user,router])
-  console.log(user)
   return (
     <div className="flex flex-col items-center justify-center justify-center gap-4">
       <h2>Tu información</h2>
@@ -33,7 +31,7 @@ export default function Profile(){
             <img
               className="w-24 h-24 rounded-full"
               src={user?.photoURL ? user?.photoURL:"/none"}
-              alt={user?.photoURL ? user?.photoURL + "foto":"No tienes foto"}
+              alt={user?.photoURL ? user?.photoURL + "foto":"Foto no encontrada"}
               width="384"
               height="512"
               />

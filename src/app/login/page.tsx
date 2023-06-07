@@ -62,7 +62,7 @@ export default function Login(){
             <span className="text-center">¿No estas registrado? {" "}
               <Link className="text-sky-600" href="/register">Registrate</Link>
             </span>
-            <button className="bg-[#0171d3] text-white py-2 px-6 rounded-md">Login</button>
+            <button className="bg-[#0171d3] text-white py-2 px-6 rounded-md">Ingresar</button>
             <div className="flex items-center gap-2 text-slate-600">
               <hr className="grow"/>
               <span className="self-center text-slate-600">Más</span>
