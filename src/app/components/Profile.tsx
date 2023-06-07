@@ -2,6 +2,7 @@
 import { FormEvent, useEffect, useState } from "react";
 import { useAuth, useAuthState } from "../Hooks/AuthContext";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 export default function Profile(){
   const router = useRouter()
   const { user, setUser } = useAuthState();
@@ -72,6 +73,12 @@ export default function Profile(){
       <button className={loading ? "mt-4 block bg-white text-black p-2 rounded-lg":"hidden"} onClick={onLogout}>
         Logout
       </button>
+      <Link href='/register' className="text-sky-200">
+        Registrarse
+      </Link>
+      <Link href='/login' className="text-sky-200">
+        Loguearse
+      </Link>
     </div>
   );
 }
