@@ -36,7 +36,9 @@ export default function Login(){
   }
   const onSubmitGoogle = async() =>{
     await googleSignIn()
-    router.push('/')
+    // router.push('/')
+    window.location.href = "/"
+
   }
   const onResetPassword = async() =>{
     window.open("/resetpassword", "_blank",'width=500,height=300')

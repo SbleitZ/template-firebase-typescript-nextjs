@@ -58,9 +58,9 @@ export default function Register(){
             </h2>
           </div>
           <form className="flex flex-col gap-4" onSubmit={(e) => onSubmit(e)}>
-            <input className="placeholder:text-slate-400 rounded-md p-4 border-2 border-solid border-slate-400" type="text" name="email" placeholder="Email" onChange={(e) => onChange(e,e.target.name,e.target.value)}/>
-            <input className="placeholder:text-slate-400 rounded-md p-4 border-2 border-solid border-slate-400" type="password" name="password" placeholder="Contraseña" onChange={(e) => onChange(e,e.target.name,e.target.value)}/>
-            <input className="placeholder:text-slate-400 rounded-md p-4 border-2 border-solid border-slate-400" type="password" name="passwordConfirmation" placeholder="Confirmar contraseña" onChange={(e) => onChange(e,e.target.name,e.target.value)}/>
+            <input className="placeholder:text-slate-400 rounded-md p-4 border-2 border-solid border-slate-400 outline-none" type="text" name="email" placeholder="Email" onChange={(e) => onChange(e,e.target.name,e.target.value)}/>
+            <input className="placeholder:text-slate-400 rounded-md p-4 border-2 border-solid border-slate-400 outline-none" type="password" name="password" placeholder="Contraseña" onChange={(e) => onChange(e,e.target.name,e.target.value)}/>
+            <input className="placeholder:text-slate-400 rounded-md p-4 border-2 border-solid border-slate-400 outline-none" type="password" name="passwordConfirmation" placeholder="Confirmar contraseña" onChange={(e) => onChange(e,e.target.name,e.target.value)}/>
             <div className="text-red-600 text-sm">{errorSubmit}</div>
             <div onClick={onResetPassword} className="text-center text-sky-600">
               <span className="cursor-pointer">¿Olvidaste tu contraseña?</span>
