@@ -10,27 +10,54 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   sendPasswordResetEmail,
-  updateProfile
+  updateProfile,
+  updateEmail
 } from "firebase/auth";
 type AuthContextType = {
   login: (email: string, password: string) => Promise<UserCredential>;
   signup: (email: string, password: string) => Promise<UserCredential>;
   logout: () => Promise<void>;
   googleSignIn: () => Promise<UserCredential>;
-  resetPassword: (email:string) => Promise<void>,
-  updateName: (name:string) => Promise<void>
+  resetPassword: (email:string) => Promise<void>;
+  updateName: (name:string) => Promise<void>;
+  updateEmailP: (email:string) => Promise<void>;
+  updateImg: (image:string) => Promise<void>;
 };
+const updateEmailP = async(email:string) =>{
+  if(email == "") return;
+  if(auth.currentUser !== null){
+    try{
+      await updateEmail(auth.currentUser,email)
+    }catch(error:any){
+      console.error(error);
+    }
+  }
+}
 const updateName = async(name:string) => {
+ if(name == "") return;
  if(auth.currentUser !== null){
   try {
     await updateProfile(auth.currentUser, {
-      displayName: name
+      displayName: name, 
     })
   } catch (error:any) {
     console.error(error)
   }
  }
 }
+const updateImg = async(urlImg: string) => {
+  if(urlImg == "") return;
+  if(auth.currentUser !== null){
+   try {
+     await updateProfile(auth.currentUser, {
+       photoURL: urlImg, 
+     })
+     console.log(urlImg)
+   } catch (error:any) {
+     console.error(error)
+   }
+  }
+ }
 const login= async(email:string,password:string) => {
 
   const userCredentials = await signInWithEmailAndPassword(auth,email,password)
@@ -49,7 +76,9 @@ export const authContext = createContext<AuthContextType | null>({
   logout,
   googleSignIn,
   resetPassword,
-  updateName
+  updateName,
+  updateEmailP,
+  updateImg
 });
 export function useAuth(){
   const context = useContext(authContext);
@@ -68,7 +97,7 @@ export function useAuthState(){
 }
 export default function AuthProvider({children}:{children: React.ReactNode}){
   return (
-    <authContext.Provider value={{signup,login,logout,googleSignIn,resetPassword,updateName}}>
+    <authContext.Provider value={{signup,login,logout,googleSignIn,resetPassword,updateName,updateEmailP,updateImg}}>
       {children}
     </authContext.Provider>
   );

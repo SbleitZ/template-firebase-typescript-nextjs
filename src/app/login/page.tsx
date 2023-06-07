@@ -3,6 +3,7 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import { useAuth } from "../Hooks/AuthContext";
 import { useRouter } from "next/navigation";
 import AuthProvider from '../Hooks/AuthContext'
+import Image from "next/image";
 export default function Login(){
   const router = useRouter()
   const [user,setUser] = useState({
@@ -22,7 +23,10 @@ export default function Login(){
       console.log("logueado correctamente")
     } catch (error:any) {
       //error.code
+      console.log("penazo")
       console.log(error.message)
+      //error.code
+      console.log(error.code)
     }
   }
   const onSubmitGoogle = async() =>{
@@ -35,14 +39,23 @@ export default function Login(){
   }
   return (
     <AuthProvider>
-      <form onSubmit={(e) => onSubmit(e)}>
+      <form className="flex flex-col items-center gap-2" onSubmit={(e) => onSubmit(e)}>
         <label htmlFor="">Email</label>
-        <input type="text" name="email" id="" onChange={(e) => onChange(e,e.target.name,e.target.value)}/>
+        <input className="placeholder:text-slate-400 text-black" type="text" name="email" placeholder="Email" onChange={(e) => onChange(e,e.target.name,e.target.value)}/>
         <label htmlFor="">password</label>
-        <input type="password" name="password" id="" onChange={(e) => onChange(e,e.target.name,e.target.value)}/>
-        <button>Login</button>
-        <button onClick={onSubmitGoogle}>Google</button>
-        <button onClick={onResetPassword}>Olvide mi contraseña</button>
+        <input className="placeholder:text-slate-400 text-black" type="password" name="password" placeholder="Contraseña" onChange={(e) => onChange(e,e.target.name,e.target.value)}/>
+        <button className="bg-white text-black p-2 rounded-lg">Login</button>
+        <div className="flex gap-6">
+          <button onClick={onSubmitGoogle}>
+            <Image
+              src={"/icons/GoogleIcon.svg"}
+              alt="icon google sesion"
+              height={30}
+              width={30}/>
+          </button>
+
+        </div>
+          <button className="text-sky-400" onClick={onResetPassword}>Olvide mi contraseña</button>
       </form>
     </AuthProvider>
   );
