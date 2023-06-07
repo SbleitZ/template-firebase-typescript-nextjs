@@ -23,7 +23,6 @@ export default function Register(){
       await signup(user.email,user.password)
       router.push('/')
     } catch (error: any) {
-      console.log("penazo")
       try {
         setErrorSubmit(errorsFirebase[error.code])
       } catch (error:any) {
