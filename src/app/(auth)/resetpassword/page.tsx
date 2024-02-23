@@ -1,6 +1,6 @@
 "use client";
 import{FormEvent,ChangeEvent, useState } from "react";
-import { useAuth } from "../Hooks/AuthContext";
+import { useAuth } from "../../Hooks/AuthContext";
 import { errorsFirebase } from "../../../firebase/utils";
 export default function ResetPassword(){
   const [email,setEmail] = useState('');
@@ -10,6 +10,7 @@ export default function ResetPassword(){
     e.preventDefault()
     try {
       await resetPassword(email)
+      setErrorSubmit("El correo ha sido enviado.")
     } catch (error:any) {
       try {
         setErrorSubmit(errorsFirebase[error.code])

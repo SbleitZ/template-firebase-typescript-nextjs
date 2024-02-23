@@ -1,11 +1,10 @@
 "use client"
 import { FormEvent, useState } from "react";
-import { useAuth, useAuthState } from "../Hooks/AuthContext";
+import { useAuth} from "../../Hooks/AuthContext";
 import Link from "next/link";
 
 export default function UpdateProfile(){
-  const { user, setUser } = useAuthState();
-  const {updateName, updateEmailP, updateImg} =  useAuth();
+  const {user,updateName, updateEmailP, updateImg} =  useAuth();
   const [dataProfile, setDataProfile] = useState({
     name: '',
     email: '',

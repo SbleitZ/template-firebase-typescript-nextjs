@@ -1,11 +1,11 @@
 "use client";
-import { useEffect, useState } from "react";
-import { useAuth, useAuthState } from "../Hooks/AuthContext";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useAuth } from "../Hooks/AuthContext";
 export default function Profile(){
   const router = useRouter()
-  const { user, setUser } = useAuthState();
+  const { user } = useAuth();
   const { logout} =  useAuth();
   const [ loading, setLoading ] = useState<boolean>(false);
   const onLogout = () => {
@@ -22,7 +22,7 @@ export default function Profile(){
     }
   },[user,router])
   return (
-    <div className="flex flex-col items-center justify-center justify-center gap-4">
+    <div className="flex flex-col items-center justify-center gap-4">
       <h2>Tu información</h2>
       {
         loading ? 
