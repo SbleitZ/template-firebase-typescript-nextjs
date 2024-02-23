@@ -7,7 +7,7 @@ First, run the development server:
 npm install
 npm run dev
 ```
-Necesitas crear un .env.local y poner los datos así
+Necesitas crear un .env y poner los datos así
 ```env
 NEXT_PUBLIC_FIREBASE_API_KEY=edita_aqui
 NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=edita_aqui
